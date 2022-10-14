@@ -41,6 +41,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
 
   /// Callback function for when a section opens
   final Function? onOpenSection;
+  final bool? selectedContainerColor;
 
   /// Callback functionf or when a section closes
   final Function? onCloseSection;
@@ -78,6 +79,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
     String? accordionId,
     this.onOpenSection,
     this.onCloseSection,
+    this.selectedContainerColor = false,
   }) : super(key: key) {
     final listCtrl = Get.put(ListController(), tag: accordionId);
     uniqueKey = listCtrl.keys.elementAt(index);
@@ -174,7 +176,8 @@ class AccordionSection extends StatelessWidget with CommonParams {
         key: uniqueKey,
         children: [
           Container(
-            color: Colors.white,
+            color:
+                selectedContainerColor! ? Color(0XFFFF4158) : Color(0XFF142550),
             // transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
             child: InkWell(
               onTap: () {
