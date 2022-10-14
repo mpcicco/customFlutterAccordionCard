@@ -204,7 +204,8 @@ class AccordionSection extends StatelessWidget with CommonParams {
               }
             },
             child: AnimatedContainer(
-              transform: Matrix4.translationValues(0.0, -70.0 * index + 1, 0.0),
+              transform:
+                  Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
               duration: Accordion.sectionAnimation
                   ? 750.milliseconds
                   : 0.milliseconds,
