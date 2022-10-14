@@ -38,6 +38,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
   late final UniqueKey uniqueKey;
   late final int index;
   final bool isOpen;
+  final bool previusOpen;
   final Key? previuosKey;
 
   /// Callback function for when a section opens
@@ -58,6 +59,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
     this.previuosKey,
     this.index = 0,
     this.isOpen = false,
+    this.previusOpen = false,
     required this.header,
     required this.content,
     Color? headerBackgroundColor,
@@ -123,7 +125,6 @@ class AccordionSection extends StatelessWidget with CommonParams {
       flipRightIconIfOpen?.value == true ? (_isOpen ? 2 : 0) : 0;
 
   get _isPreviusOpen {
-    // final listCtrl = Get.put(ListController(), tag: accordionId);
     final previusOpen = sectionCtrl.isPreviusSectionOpen.value;
 
     return previusOpen;
@@ -189,7 +190,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
         key: uniqueKey,
         children: [
           Container(
-            color: index > 0 && _isPreviusOpen
+            color: (index > 0 && _isPreviusOpen) || previusOpen
                 ? Color(0XFFFF4158)
                 : Color(0XFF142550),
             // transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
