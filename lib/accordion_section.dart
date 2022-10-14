@@ -174,7 +174,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
         key: uniqueKey,
         children: [
           Container(
-            transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
+            // transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
             child: InkWell(
               onTap: () {
                 final listCtrl = Get.put(ListController(), tag: accordionId);
