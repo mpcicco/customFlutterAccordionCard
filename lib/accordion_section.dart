@@ -239,10 +239,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(
-                bottom: _isOpen
-                    ? paddingBetweenOpenSections!
-                    : paddingBetweenClosedSections!),
+            padding: EdgeInsets.only(bottom: _isOpen ? 0 : 0),
             child: SizeTransition(
               sizeFactor: sectionCtrl.controller,
               child: ScaleTransition(
