@@ -204,6 +204,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
               }
             },
             child: AnimatedContainer(
+              transform: Matrix4.translationValues(0.0, -70.0, 0.0),
               duration: Accordion.sectionAnimation
                   ? 750.milliseconds
                   : 0.milliseconds,
@@ -211,6 +212,13 @@ class AccordionSection extends StatelessWidget with CommonParams {
               alignment: Alignment.center,
               padding: headerPadding,
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.15),
+                    spreadRadius: 0,
+                    blurRadius: 20, // changes position of shadow
+                  ),
+                ],
                 color: (_isOpen
                         ? headerBackgroundColorOpened
                         : headerBackgroundColor) ??
