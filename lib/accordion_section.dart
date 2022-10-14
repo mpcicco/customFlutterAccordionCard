@@ -217,7 +217,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
                     Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.vertical(
                   top: Radius.circular(borderRadius),
-                  bottom: Radius.circular(_isOpen ? 0 : borderRadius),
+                  bottom: Radius.circular(_isOpen ? 0 : 0),
                 ),
               ),
               child: Row(
