@@ -263,8 +263,8 @@ class AccordionSection extends StatelessWidget with CommonParams {
                     decoration: BoxDecoration(
                       color:
                           contentBorderColor ?? Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.vertical(
-                          bottom: Radius.circular(contentBorderRadius!)),
+                      borderRadius: const BorderRadius.vertical(
+                          bottom: Radius.circular(0)),
                     ),
                     child: Padding(
                       padding: EdgeInsets.fromLTRB(
@@ -278,15 +278,13 @@ class AccordionSection extends StatelessWidget with CommonParams {
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.vertical(
-                                bottom: Radius.circular(
-                                    contentBorderRadius! / 1.02))),
+                                bottom: Radius.circular(0))),
                         child: Container(
                           clipBehavior: Clip.antiAlias,
                           decoration: BoxDecoration(
                               color: contentBackgroundColor,
                               borderRadius: BorderRadius.vertical(
-                                  bottom: Radius.circular(
-                                      contentBorderRadius! / 1.02))),
+                                  bottom: Radius.circular(0))),
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: contentHorizontalPadding!,
