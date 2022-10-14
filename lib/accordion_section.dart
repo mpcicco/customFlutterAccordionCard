@@ -111,6 +111,8 @@ class AccordionSection extends StatelessWidget with CommonParams {
 
     listCtrl.controllerIsOpen.stream.asBroadcastStream().listen((data) {
       sectionCtrl.isSectionOpen.value = listCtrl.openSections.contains(key);
+      sectionCtrl.isPreviusSectionOpen.value =
+          listCtrl.openSections.contains(previuosKey);
     });
   }
 
@@ -120,7 +122,15 @@ class AccordionSection extends StatelessWidget with CommonParams {
   get _flipQuarterTurns =>
       flipRightIconIfOpen?.value == true ? (_isOpen ? 2 : 0) : 0;
 
+  get _isPreviusOpen {
+    // final listCtrl = Get.put(ListController(), tag: accordionId);
+    final previusOpen = sectionCtrl.isPreviusSectionOpen.value;
+
+    return previusOpen;
+  }
+
   /// getter indication the open or closed status of this section
+
   get _isOpen {
     final listCtrl = Get.put(ListController(), tag: accordionId);
     final open = sectionCtrl.isSectionOpen.value;
@@ -179,7 +189,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
         key: uniqueKey,
         children: [
           Container(
-            color: index > 0 && listCtrl.openSections.contains(previuosKey!)
+            color: index > 0 && _isPreviusOpen
                 ? Color(0XFFFF4158)
                 : Color(0XFF142550),
             // transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),

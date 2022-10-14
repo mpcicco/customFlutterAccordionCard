@@ -93,6 +93,7 @@ class SectionController extends GetxController
     with GetSingleTickerProviderStateMixin {
   late final controller = AnimationController(vsync: this);
   final isSectionOpen = false.obs;
+  final isPreviusSectionOpen = false.obs;
   bool firstRun = true;
 
   @override
