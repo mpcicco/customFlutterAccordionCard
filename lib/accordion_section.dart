@@ -174,6 +174,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
         key: uniqueKey,
         children: [
           Container(
+            color: Colors.white,
             // transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
             child: InkWell(
               onTap: () {
@@ -217,7 +218,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
                     BoxShadow(
                       color: Colors.black.withOpacity(0.15),
                       spreadRadius: 0,
-                      blurRadius: 20, // changes position of shadow
+                      blurRadius: 10, // changes position of shadow
                     ),
                   ],
                   color: (_isOpen
