@@ -38,7 +38,6 @@ class AccordionSection extends StatelessWidget with CommonParams {
   late final UniqueKey uniqueKey;
   late final int index;
   final bool isOpen;
-  final bool previusOpen;
   final Key? previuosKey;
 
   /// Callback function for when a section opens
@@ -59,7 +58,6 @@ class AccordionSection extends StatelessWidget with CommonParams {
     this.previuosKey,
     this.index = 0,
     this.isOpen = false,
-    this.previusOpen = false,
     required this.header,
     required this.content,
     Color? headerBackgroundColor,
@@ -228,7 +226,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
               },
               child: AnimatedContainer(
                 duration: Accordion.sectionAnimation
-                    ? 750.milliseconds
+                    ? 250.milliseconds
                     : 0.milliseconds,
                 curve: Curves.easeOut,
                 alignment: Alignment.center,
