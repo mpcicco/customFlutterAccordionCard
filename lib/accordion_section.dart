@@ -173,77 +173,78 @@ class AccordionSection extends StatelessWidget with CommonParams {
       () => Column(
         key: uniqueKey,
         children: [
-          InkWell(
-            onTap: () {
-              final listCtrl = Get.put(ListController(), tag: accordionId);
-              listCtrl.updateSections(uniqueKey);
-              _playHapticFeedback(_isOpen);
+          Container(
+            transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
+            child: InkWell(
+              onTap: () {
+                final listCtrl = Get.put(ListController(), tag: accordionId);
+                listCtrl.updateSections(uniqueKey);
+                _playHapticFeedback(_isOpen);
 
-              if (_isOpen &&
-                  scrollIntoViewOfItems != ScrollIntoViewOfItems.none &&
-                  listCtrl.controller.hasClients) {
-                Timer(
-                  250.milliseconds,
-                  () {
-                    listCtrl.controller.cancelAllHighlights();
-                    listCtrl.controller.scrollToIndex(index,
-                        preferPosition: AutoScrollPosition.middle,
-                        duration:
-                            (scrollIntoViewOfItems == ScrollIntoViewOfItems.fast
-                                    ? .5
-                                    : 1)
-                                .seconds);
-                  },
-                );
-              }
+                if (_isOpen &&
+                    scrollIntoViewOfItems != ScrollIntoViewOfItems.none &&
+                    listCtrl.controller.hasClients) {
+                  Timer(
+                    250.milliseconds,
+                    () {
+                      listCtrl.controller.cancelAllHighlights();
+                      listCtrl.controller.scrollToIndex(index,
+                          preferPosition: AutoScrollPosition.middle,
+                          duration: (scrollIntoViewOfItems ==
+                                      ScrollIntoViewOfItems.fast
+                                  ? .5
+                                  : 1)
+                              .seconds);
+                    },
+                  );
+                }
 
-              if (_isOpen) {
-                if (onCloseSection != null) onCloseSection!.call();
-              } else {
-                if (onOpenSection != null) onOpenSection!.call();
-              }
-            },
-            child: AnimatedContainer(
-              transform:
-                  Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
-              duration: Accordion.sectionAnimation
-                  ? 750.milliseconds
-                  : 0.milliseconds,
-              curve: Curves.easeOut,
-              alignment: Alignment.center,
-              padding: headerPadding,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.15),
-                    spreadRadius: 0,
-                    blurRadius: 20, // changes position of shadow
-                  ),
-                ],
-                color: (_isOpen
-                        ? headerBackgroundColorOpened
-                        : headerBackgroundColor) ??
-                    Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(borderRadius),
-                  bottom: Radius.circular(_isOpen ? 0 : 0),
-                ),
-              ),
-              child: Row(
-                children: [
-                  if (leftIcon != null) leftIcon!,
-                  Expanded(
-                    flex: 10,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: leftIcon == null ? 0 : 15),
-                      child: header,
+                if (_isOpen) {
+                  if (onCloseSection != null) onCloseSection!.call();
+                } else {
+                  if (onOpenSection != null) onOpenSection!.call();
+                }
+              },
+              child: AnimatedContainer(
+                duration: Accordion.sectionAnimation
+                    ? 750.milliseconds
+                    : 0.milliseconds,
+                curve: Curves.easeOut,
+                alignment: Alignment.center,
+                padding: headerPadding,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.15),
+                      spreadRadius: 0,
+                      blurRadius: 20, // changes position of shadow
                     ),
+                  ],
+                  color: (_isOpen
+                          ? headerBackgroundColorOpened
+                          : headerBackgroundColor) ??
+                      Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(borderRadius),
+                    bottom: Radius.circular(_isOpen ? 0 : 0),
                   ),
-                  if (rightIcon != null)
-                    RotatedBox(
-                        quarterTurns: _flipQuarterTurns, child: rightIcon!),
-                ],
+                ),
+                child: Row(
+                  children: [
+                    if (leftIcon != null) leftIcon!,
+                    Expanded(
+                      flex: 10,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: leftIcon == null ? 0 : 15),
+                        child: header,
+                      ),
+                    ),
+                    if (rightIcon != null)
+                      RotatedBox(
+                          quarterTurns: _flipQuarterTurns, child: rightIcon!),
+                  ],
+                ),
               ),
             ),
           ),
