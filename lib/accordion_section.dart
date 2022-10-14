@@ -226,7 +226,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
               },
               child: AnimatedContainer(
                 duration: Accordion.sectionAnimation
-                    ? 250.milliseconds
+                    ? 150.milliseconds
                     : 0.milliseconds,
                 curve: Curves.easeOut,
                 alignment: Alignment.center,
