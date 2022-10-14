@@ -88,6 +88,8 @@ class AccordionSection extends StatelessWidget with CommonParams {
     final listCtrl = Get.put(ListController(), tag: accordionId);
     uniqueKey = listCtrl.keys.elementAt(index);
     sectionCtrl.isSectionOpen.value = listCtrl.openSections.contains(uniqueKey);
+    sectionCtrl.isPreviusSectionOpen.value =
+        listCtrl.openSections.contains(previuosKey);
 
     this.headerBackgroundColor = headerBackgroundColor;
     this.headerBackgroundColorOpened =
