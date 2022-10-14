@@ -144,6 +144,7 @@ class Accordion extends StatelessWidget with CommonParams {
       itemBuilder: (context, index) {
         final key = listCtrl.keys.elementAt(index);
         final child = children.elementAt(index);
+        final previusKey = listCtrl.keys.elementAt(index > 0 ? index - 1 : 0);
 
         return AutoScrollTag(
           key: key,
@@ -153,7 +154,7 @@ class Accordion extends StatelessWidget with CommonParams {
             key: key,
             index: index,
             selectedContainerColor:
-                index > 0 && children.elementAt(index - 1).isOpen,
+                index > 0 && listCtrl.openSections.contains(previusKey),
             isOpen: child.isOpen,
             scrollIntoViewOfItems: scrollIntoViewOfItems,
             headerBackgroundColor:
