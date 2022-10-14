@@ -152,9 +152,10 @@ class Accordion extends StatelessWidget with CommonParams {
           index: index,
           child: AccordionSection(
             key: key,
+            previuosKey: previusKey,
             index: index,
-            selectedContainerColor:
-                index > 0 && listCtrl.openSections.contains(previusKey),
+            // selectedContainerColor:
+            //     index > 0 && listCtrl.openSections.contains(previusKey),
             isOpen: child.isOpen,
             scrollIntoViewOfItems: scrollIntoViewOfItems,
             headerBackgroundColor:

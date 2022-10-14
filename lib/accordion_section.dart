@@ -38,6 +38,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
   late final UniqueKey uniqueKey;
   late final int index;
   final bool isOpen;
+  final Key? previuosKey;
 
   /// Callback function for when a section opens
   final Function? onOpenSection;
@@ -54,6 +55,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
 
   AccordionSection({
     Key? key,
+    this.previuosKey,
     this.index = 0,
     this.isOpen = false,
     required this.header,
@@ -170,14 +172,16 @@ class AccordionSection extends StatelessWidget with CommonParams {
   @override
   build(context) {
     final borderRadius = headerBorderRadius ?? 10;
+    final listCtrl = Get.put(ListController(), tag: accordionId);
 
     return Obx(
       () => Column(
         key: uniqueKey,
         children: [
           Container(
-            color:
-                selectedContainerColor! ? Color(0XFFFF4158) : Color(0XFF142550),
+            color: index > 0 && listCtrl.openSections.contains(previuosKey!)
+                ? Color(0XFFFF4158)
+                : Color(0XFF142550),
             // transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
             child: InkWell(
               onTap: () {
