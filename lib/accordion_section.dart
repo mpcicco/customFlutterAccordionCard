@@ -190,7 +190,8 @@ class AccordionSection extends StatelessWidget with CommonParams {
         key: uniqueKey,
         children: [
           Container(
-            color: Colors.white,
+            color: (index > 0) ? Colors.white : Color(0XFF142550),
+
             // color: (index > 0 && _isPreviusOpen)
             //     ? Color(0XFFFF4158)
             //     : Color(0XFF142550),
