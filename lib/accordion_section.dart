@@ -192,7 +192,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
           Container(
             color: (index > 0 && _isPreviusOpen)
                 ? Color(0XFFFF4158)
-                : Color(0XFF142550),
+                : Color(0xFF293757),
             // transform: Matrix4.translationValues(0.0, -45.0 * (index + 1), 0.0),
             child: InkWell(
               onTap: () {
