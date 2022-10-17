@@ -236,7 +236,7 @@ class AccordionSection extends StatelessWidget with CommonParams {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.15),
+                      color: Colors.black.withOpacity(0.3),
                       spreadRadius: 0,
                       blurRadius: 10, // changes position of shadow
                     ),
